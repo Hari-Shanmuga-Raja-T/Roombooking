@@ -1,34 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Roomid:</strong>
-  <%= @room.roomid %>
-</p>
-
-<p>
-  <strong>Hotelid:</strong>
-  <%= @room.hotelid %>
-</p>
-
-<p>
-  <strong>Roomno:</strong>
-  <%= @room.roomno %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @room.status %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @room.price %>
-</p>
-
-<p>
-  <strong>Roomtype:</strong>
-  <%= @room.roomtype %>
-</p>
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<div class="jumbotron">
+  <h1 class="display-4"><%= @room.roomid %></h1>
+  <p class="lead"><%= @room.hotelid %>  |  <%= @room.roomno %>  |  <%= @room.status %> </p>
+  <p class="lead"><%= @room.price %>  |  <%= @room.roomtype %></p>
+  <%= link_to 'Edit', edit_room_path(@room),class:"btn btn-dark" %>
+  <%= link_to 'Back', rooms_path,class:"btn btn-dark" %>
+</div>

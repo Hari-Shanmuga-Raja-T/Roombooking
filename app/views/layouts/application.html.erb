@@ -16,7 +16,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <%= render 'users/managernavbar'%>
+    <br>
+    <%if notice%>
+    <%= render 'layouts/alerts'%>
+    <%end%>
+    <div class="container">
+      <br>
       <%= yield %>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

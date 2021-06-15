@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :roomid %>
-    <%= form.text_field :roomid %>
+    <%= form.text_field :roomid, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :hotelid %>
-    <%= form.text_field :hotelid %>
+    <%= form.text_field :hotelid, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :roomno %>
-    <%= form.text_field :roomno %>
+    <%= form.text_field :roomno, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.text_field :status, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :roomtype %>
-    <%= form.text_field :roomtype %>
+    <%= form.text_field :roomtype, class:"form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-dark"%>
   </div>
 <% end %>
