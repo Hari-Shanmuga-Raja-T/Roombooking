@@ -1,4 +1,8 @@
 class Hotel < ApplicationRecord
-#  has_many :logs
-#  has_many :rooms
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  has_many :logs
+  has_many :rooms
 end
