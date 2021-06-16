@@ -7,11 +7,28 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-          <%= link_to 'Add room' , new_room_path,class:"nav-link"%>
-      </li>
-      <li class="nav-item">
-          <%= link_to 'Manage rooms' , rooms_path,class:"nav-link"%>
-      </li>
+
+      <% if hotel_signed_in? %>
+        <li class="nav-item">
+            <%= link_to 'Manage rooms' , rooms_path,class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Add room' , new_room_path,class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Sign Out' , destroy_hotel_session_path,method: :delete,class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Edit Profile' , edit_hotel_registration_path,class:"nav-link"%>
+        </li>
+      <% else %>
+        <li class="nav-item">
+            <%= link_to 'Sign Up' , new_hotel_registration_path,class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Sign In' , new_hotel_session_path,class:"nav-link"%>
+        </li>
+      <% end %>
+
   </div>
 </nav>
