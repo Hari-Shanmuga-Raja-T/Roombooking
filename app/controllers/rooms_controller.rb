@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
+  before_action :authenticate_hotel!, excepr: [:index, :show]
+  before_action :correct_hotel, only: [:edit, :update,:destroy]
 
   # GET /rooms or /rooms.json
   def index
@@ -12,7 +14,8 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
-    @room = Room.new
+    #@room = Room.new
+    @room = current_hotel.rooms.build
   end
 
   # GET /rooms/1/edit
@@ -21,7 +24,8 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+    #@room = Room.new(room_params)
+    @room = current_hotel.rooms.build(room_params)
 
     respond_to do |format|
       if @room.save
@@ -56,6 +60,11 @@ class RoomsController < ApplicationController
     end
   end
 
+  def correct_hotel
+    @room = current_hotel.rooms.find_by(id: params[:id])
+    redirect_to rooms_path, notice: "Not authorized for this action" if @room.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
@@ -64,6 +73,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:roomid, :hotelid, :roomno, :status, :price, :roomtype)
+      params.require(:room).permit(:roomid,:roomno, :status, :price, :roomtype, :hotel_id)
     end
 end

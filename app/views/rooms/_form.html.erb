@@ -17,8 +17,8 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :hotelid %>
-    <%= form.text_field :hotelid, class:"form-control" %>
+    <% form.label :hotel_id %>
+    <%= form.text_field :hotel_id, id: :room_hotel_id, value: current_hotel.id ,type: :hidden , class:"form-control" %>
   </div>
 
   <div class="field form-group">

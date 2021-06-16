@@ -16,17 +16,19 @@
 
   <tbody>
     <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.roomid %></td>
-        <td><%= room.hotelid %></td>
-        <td><%= room.roomno %></td>
-        <td><%= room.status %></td>
-        <td><%= room.price %></td>
-        <td><%= room.roomtype %></td>
-        <td><%= link_to 'Show', room ,class:"btn btn-light"%></td>
-        <td><%= link_to 'Edit', edit_room_path(room) ,class:"btn btn-light"%></td>
-        <td><%= link_to 'Destroy', room,class:"btn btn-light", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if room.hotel == current_hotel %>
+        <tr>
+          <td><%= room.roomid %></td>
+          <td><%= room.hotel_id %></td>
+          <td><%= room.roomno %></td>
+          <td><%= room.status %></td>
+          <td><%= room.price %></td>
+          <td><%= room.roomtype %></td>
+          <td><%= link_to 'Show', room ,class:"btn btn-light"%></td>
+          <td><%= link_to 'Edit', edit_room_path(room) ,class:"btn btn-light"%></td>
+          <td><%= link_to 'Destroy', room,class:"btn btn-light", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>
