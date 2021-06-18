@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/users/booking', :to => "logs#create"
   devise_for :users , path: 'users'
   devise_for :hotels
   resources :rooms

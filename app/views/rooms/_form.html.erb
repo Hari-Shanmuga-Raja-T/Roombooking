@@ -17,12 +17,12 @@
   </div>
 
   <div class="field form-group">
-    <% form.label :hotel_id %>
+    <%= form.label :hotel_id %>
     <%= form.text_field :hotel_id, id: :room_hotel_id, value: current_hotel.id ,type: :hidden , class:"form-control" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :roomno %>
+    <% form.label :roomno %>
     <%= form.text_field :roomno, class:"form-control" %>
   </div>
 

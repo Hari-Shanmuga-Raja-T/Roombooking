@@ -5,6 +5,7 @@ class UsersController<ApplicationController
     @hotels=Hotel.all
   end
   def userroombooking
-    @room = Room.find(params[:id])
+    @room = Room.all
+    @hotel_id = params[:id]
   end
 end

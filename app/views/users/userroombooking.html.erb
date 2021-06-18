@@ -1,1 +1,16 @@
-<h>Welcome</h>
+<% @room.each do |h| %>
+    <% if h.hotel_id == @hotel_id %>
+        <div class="jumbotron">
+        <h1 class="display-4"><%= h.roomid %></h1>
+        <p class="lead"><%= h.roomno %> | <%= h.status %></p>
+        <hr class="my-4">
+        <p><%= h.price %> | <%= h.roomtype %></p>
+
+        <%= render 'logform', log: h %>
+        <%# link_to 'Book', users_userhome_path ,class:"btn btn-dark"%>
+        </div>
+    <% end %>
+<% end %>
+<%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%>
+<br>
+
