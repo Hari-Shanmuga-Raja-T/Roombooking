@@ -8,4 +8,7 @@ class UsersController<ApplicationController
     @room = Room.all
     @hotel_id = params[:id]
   end
+  def userhistory
+    @logs = Log.all
+  end
 end
