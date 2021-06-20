@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post '/users/booking', :to => "logs#create"
+  post '/users/roomsearch', :to => 'users#roomsearch'
   get 'users/history' , :to => "users#userhistory" , as: :users_history
   devise_for :users , path: 'users'
   devise_for :hotels

@@ -5,12 +5,12 @@
 
   <div class="field form-group">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class: "form-control" %>
   </div>
 
   <div class="field form-group">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname", class: "form-control" %>
   </div>
 
   <div class="field form-group">
@@ -33,12 +33,17 @@
 
   <div class="field form-group">
     <%= f.label :phno %><br />
-    <%= f.text_field :phno, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.text_field :phno, autofocus: true, autocomplete: "phno", class: "form-control" %>
   </div>
 
   <div class="field form-group">
     <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :mode %><br />
+    <%= f.select :mode, ['User' , 'Manager'] %> 
   </div>
 
   <div class="actions">

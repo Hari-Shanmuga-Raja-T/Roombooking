@@ -1,28 +1,28 @@
 <%= form_with url: "/users/booking" , method: :post do |form| %>
     
     <div class="field form-group">
-      <%= form.label :room_id %>
-      <%= form.text_field :room_id,value: log.roomid, class:"form-control" %>
+      <% form.label :room_id %>
+      <%= form.text_field :room_id,value: log.roomid, class:"form-control", type: :hidden %>
     </div>
   
     <div class="field form-group">
-      <%= form.label :hotel_id %>
-      <%= form.text_field :hotel_id, value: @hotel_id, class:"form-control" %>
+      <% form.label :hotel_id %>
+      <%= form.text_field :hotel_id, value: @hotel_id, class:"form-control", type: :hidden %>
     </div>
     
     <div class="field form-group">
-      <%= form.label :user_id %>
-      <%= form.text_field :user_id,value: current_user.id, class:"form-control" %>
+      <% form.label :user_id %>
+      <%= form.text_field :user_id,value: current_user.id, class:"form-control", type: :hidden %>
     </div>
   
     <div class="field form-group">
-      <%= form.label :start_date %>
-      <%= form.text_field :startdate, class:"form-control" %>
+      <%= form.label :start_date %><br>
+      <input type="date" name="startdate" class="form-control">
     </div>
   
     <div class="field form-group">
-      <%= form.label :end_date %>
-      <%= form.text_field :enddate, class:"form-control" %>
+      <%= form.label :end_date %><br>
+      <input type="date" name="enddate" class="form-control">
     </div>
   
     <div class="actions">

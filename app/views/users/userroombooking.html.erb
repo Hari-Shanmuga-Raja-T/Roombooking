@@ -1,5 +1,5 @@
 <% @room.each do |h| %>
-    <% if h.hotel_id == @hotel_id %>
+    <% if h.hotel_id == @hotel_id  and h.status == "Available"%>
         <div class="jumbotron">
         <h1 class="display-4"><%= h.roomid %></h1>
         <p class="lead"><%= h.roomno %> | <%= h.status %></p>
