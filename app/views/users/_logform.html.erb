@@ -1,5 +1,4 @@
 <%= form_with url: "/users/booking" , method: :post do |form| %>
-    
     <div class="field form-group">
       <% form.label :room_id %>
       <%= form.text_field :room_id,value: log.roomid, class:"form-control", type: :hidden %>
