@@ -1,34 +1,11 @@
  <% if hotel_signed_in? %> 
-  <table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>User Name</th>
-      <th>Room Id</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @logs.each do |log| %>
-        <% if log.hotel_id.to_i == current_hotel.id %>
-        <% @user=User.find_by id:log.user_id %>
-            <tr>
-            <td><%= @user.firstname+" "+@user.lastname %></td>
-            <td><%= log.room_id %></td>
-            <td><%= log.startdate %></td>
-            <td><%= log.enddate %></td>
-            </tr>
-        <% end %>
-    <%end%>
-  </tbody>
-  </table>
-  <br>
-<% else %>
-  <table class="table table-bordered table-hover">
+  <% if @temp.nil? %>
+    <%= render 'msg01' %>
+  <% else %>
+    <table class="table table-bordered table-hover">
     <thead class="thead-dark">
       <tr>
-        <th>Hotel Name</th>
+        <th>User Name</th>
         <th>Room Id</th>
         <th>Start Date</th>
         <th>End Date</th>
@@ -37,10 +14,10 @@
 
     <tbody>
       <% @logs.each do |log| %>
-          <% if log.user_id.to_i == current_user.id %>
-          <% @hotel=Hotel.find_by id:log.hotel_id %>
+          <% if log.hotel_id.to_i == current_hotel.id %>
+          <% @user=User.find_by id:log.user_id %>
               <tr>
-              <td><%= @hotel.hotelname %></td>
+              <td><%= @user.firstname+" "+@user.lastname %></td>
               <td><%= log.room_id %></td>
               <td><%= log.startdate %></td>
               <td><%= log.enddate %></td>
@@ -48,7 +25,38 @@
           <% end %>
       <%end%>
     </tbody>
-  </table>
+    </table>
+  <% end %>
+  <br>
+<% else %>
+  <% if @temp.nil? %>
+    <%= render 'msg01' %>
+  <% else %>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Hotel Name</th>
+          <th>Room Id</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @logs.each do |log| %>
+            <% if log.user_id.to_i == current_user.id %>
+            <% @hotel=Hotel.find_by id:log.hotel_id %>
+                <tr>
+                <td><%= @hotel.hotelname %></td>
+                <td><%= log.room_id %></td>
+                <td><%= log.startdate %></td>
+                <td><%= log.enddate %></td>
+                </tr>
+            <% end %>
+        <%end%>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
 <br>
 <td><%= link_to 'Back', root_path ,class:"btn btn-dark"%></td>

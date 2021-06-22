@@ -21,10 +21,10 @@ class User < ApplicationRecord
     on: :update
   validates :firstname,presence: true
   validates :lastname,presence: true
-  validates :phno,presence: true
+  validates :phno,presence: true,uniqueness: true,length: { in: 6..10 },numericality: { only_integer: true }
   validates :address,presence: true
   validates :mode,presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :logs
+  has_many :logs, dependent: :destroy
 end

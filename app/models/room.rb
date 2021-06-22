@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-    validates :roomid, presence: true
+    validates :roomid, presence: true, uniqueness: true
     validates :hotel_id, presence: true
     validates :roomno, presence: true
     validates :status, presence: true

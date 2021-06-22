@@ -1,3 +1,6 @@
+<% if @t.nil? %>
+    <%= render 'msg01' %>
+<% end %>
 <% @room.each do |h| %>
     <% if h.hotel_id == @hotel_id  and h.status == "Available"%>
         <div class="jumbotron">

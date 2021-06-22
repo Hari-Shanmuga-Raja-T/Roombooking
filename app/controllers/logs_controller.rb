@@ -1,6 +1,4 @@
 class LogsController<ApplicationController
-    
-
     def create
         new_log = Log.new
         new_log.hotel_id = params[:hotel_id]
@@ -25,10 +23,7 @@ class LogsController<ApplicationController
     end
 
     def valid_date_or_not(startdate , enddate)
-        if Date.parse(startdate) < Date.today
-           return false
-        end
-        if Date.parse(startdate) > Date.parse(enddate)
+        if Date.parse(startdate) < Date.today or Date.parse(startdate) > Date.parse(enddate)
            return false
         end
         return true
