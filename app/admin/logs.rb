@@ -14,5 +14,5 @@ ActiveAdmin.register Log do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :hotel_id , as: :select 
 end

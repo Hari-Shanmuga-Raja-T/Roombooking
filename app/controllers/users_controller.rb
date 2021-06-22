@@ -11,12 +11,6 @@ class UsersController<ApplicationController
   end
   def userhistory
     @logs = Log.all
-    if hotel_signed_in?
-      @temp = Log.find_by(hotel_id: current_hotel.id)
-    end
-    if user_signed_in?
-      @temp = Log.find_by(hotel_id: current_user.id)
-    end
   end
   def roomsearch
     @hotels = Hotel.all

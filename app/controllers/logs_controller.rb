@@ -11,7 +11,6 @@ class LogsController<ApplicationController
                 if new_log.save
                     room = Room.find_by(roomid: params[:room_id])
                     room.update(status: 'Not available')
-                    room.save
                     format.html { redirect_to users_userhome_path , notice: "Successfully booked"}
                 end
             end

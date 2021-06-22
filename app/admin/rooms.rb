@@ -14,5 +14,5 @@ ActiveAdmin.register Room do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :status , as: :select 
 end
