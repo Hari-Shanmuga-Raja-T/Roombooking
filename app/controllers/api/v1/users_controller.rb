@@ -15,6 +15,10 @@ module Api
             respond_with "Successfully deleted"
             User.find(params[:id]).destroy
         end
+
+        def showlog
+          respond_with ({:user => User.find_by(id: params[:id]), :log => Log.where(user_id: params[:id])})
+        end
       end
     end
   end
