@@ -5,19 +5,21 @@ module Api
         protect_from_forgery with: :null_session
         def create
             @room = Room.new(user_params)
-            if @room.save
-                respond_with "Successfully creates"
-            else
-                respond_with "Creation was unsuccessful"
-            end
+            @room.save
         end
+
+        def index
+            respond_with Room.all
+        end
+
         def update
             @room = Room.find_by(id: params[:id])
-            if @room.update(status: params[:status])
-                respond_with "Successfully updated"
-            else
-                respond_with "Updation was unsuccessful"
-            end
+            @room.update(status: params[:status])
+        end
+
+        def destroy
+            respond_with "Successfully deleted"
+            Room.find(params[:id]).destroy
         end
 
         private

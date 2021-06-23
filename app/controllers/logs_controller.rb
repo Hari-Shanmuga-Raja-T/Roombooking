@@ -1,6 +1,7 @@
 class LogsController<ApplicationController
     def create
         new_log = Log.new
+        $Rid = params[:room_id]
         new_log.hotel_id = params[:hotel_id]
         new_log.user_id = params[:user_id]
         new_log.room_id = params[:room_id]
@@ -9,8 +10,8 @@ class LogsController<ApplicationController
         if valid_date_or_not(params[:startdate],params[:enddate])
             respond_to do |format|
                 if new_log.save
-                    room = Room.find_by(roomid: params[:room_id])
-                    room.update(status: 'Not available')
+                    #room = Room.find_by(roomid: params[:room_id])
+                    #room.update(status: 'Not available')
                     format.html { redirect_to users_userhome_path , notice: "Successfully booked"}
                 end
             end
@@ -28,4 +29,5 @@ class LogsController<ApplicationController
         return true
      end
 
+     
 end
