@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #end
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      get 'users/:id', :to => "users#showlog" 
+      get 'users/showlog/:id', :to => "users#showlog" 
       resources :users
       resources :rooms
       resources :logs
