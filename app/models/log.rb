@@ -12,11 +12,7 @@ class Log < ApplicationRecord
    private
      def updatestatus
         room = Room.find_by(roomid: $Rid)
-        if room.update(status: 'Not available')
-            puts ("====================================Success===============================")
-        else
-            puts ("====================================failed================================")
-        end
+        room.update(status: 'Not available')
      end
 
 end

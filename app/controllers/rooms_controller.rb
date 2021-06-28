@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
-  before_action :authenticate_hotel!, excepr: [:index, :show]
+  before_action :authenticate_hotel!, excepr: [:index, :show] unless Rails.env.test?
   before_action :correct_hotel, only: [:show, :edit, :update,:destroy]
 
   # GET /rooms or /rooms.json
