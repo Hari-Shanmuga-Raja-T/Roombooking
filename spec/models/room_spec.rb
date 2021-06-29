@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Room, :type => :model do
     before do
-        @hotel = Hotel.new(hotelname:'Sample',email:'Sample@gmail.com',phno:'8523697418',address:'coimbatore',room:'1',password:'Qwerty@23jnjn')
-        @hotel.save
+        @hotel = create(:hotel)
+        # allow_any_instance_of(RoomsController).to receive(:authenticate_hotel!) {true}
+        # allow_any_instance_of(UsersController).to receive(:authenticate_user!) {true}
     end
     context 'validation tests' do
         it 'ensures roomid presence' do
@@ -27,11 +28,11 @@ RSpec.describe Room, :type => :model do
             expect(room).to eq(false)
         end
         it 'ensures roomtype presence' do
-            room = Room.new(roomid:'example201',hotel_id:@hotel.id.to_s,roomno:'201',status:'Available',price:'750').save
-            expect(room).to eq(false)
+            room = build(:room, roomtype: nil,hotel_id: @hotel.id)
+            expect(room.save).to eq(false)
         end
         it 'Successfully saved' do
-            room = Room.new(roomid:'example201',hotel_id:@hotel.id.to_s,roomno:'201',status:'Available',price:'750',roomtype:'AC/2B')
+            room = build(:room,hotel_id: @hotel.id)
             expect(room.save).to eq(true)
         end
     end
