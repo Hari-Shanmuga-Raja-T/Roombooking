@@ -1,4 +1,15 @@
 <%= form_with url: "/users/booking" , method: :post do |form| %>
+  <% log.errors.any?.to_s %>
+  <% if log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+        <ul>
+        <% log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div class="field form-group">
       <% form.label :room_id %>
       <%= form.text_field :room_id,value: log.roomid, class:"form-control", type: :hidden %>
