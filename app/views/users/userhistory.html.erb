@@ -1,62 +1,22 @@
- <% if hotel_signed_in? %> 
-    <% if Log.find_by(hotel_id: current_hotel.id).nil? %>
-      <%= render 'msg01' %> 
-    <% else %>
-      <table class="table table-bordered table-hover">
-      <thead class="thead-dark">
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Hotel Name</th>
+      <th>Room Id</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @logs.each do |log| %>
         <tr>
-          <th>User Name</th>
-          <th>Room Id</th>
-          <th>Start Date</th>
-          <th>End Date</th>
+          <td><%= log.hotel.hotelname %></td>
+          <td><%= log.room_id %></td>
+          <td><%= log.startdate %></td>
+          <td><%= log.enddate %></td>
         </tr>
-      </thead>
-
-      <tbody>
-        <% @logs.each do |log| %>
-            <% if log.hotel_id.to_i == current_hotel.id %>
-            <% @user=User.find_by id:log.user_id %>
-                <tr>
-                <td><%= @user.firstname+" "+@user.lastname %></td>
-                <td><%= log.room_id %></td>
-                <td><%= log.startdate %></td>
-                <td><%= log.enddate %></td>
-                </tr>
-            <% end %>
-        <%end%>
-      </tbody>
-      </table>
     <% end %>
-  <br>
-<% else %>
-  <% if Log.find_by(user_id: current_user.id).nil? %>
-    <%= render 'msg01' %>
-  <% else %>
-    <table class="table table-bordered table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>Hotel Name</th>
-          <th>Room Id</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @logs.each do |log| %>
-            <% if log.user_id.to_i == current_user.id %>
-            <% @hotel=Hotel.find_by id:log.hotel_id %>
-                <tr>
-                <td><%= @hotel.hotelname %></td>
-                <td><%= log.room_id %></td>
-                <td><%= log.startdate %></td>
-                <td><%= log.enddate %></td>
-                </tr>
-            <% end %>
-        <%end%>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
+  </tbody>
+</table>
 <br>
 <td><%= link_to 'Back', root_path ,class:"btn btn-dark"%></td>

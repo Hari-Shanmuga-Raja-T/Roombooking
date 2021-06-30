@@ -1,0 +1,23 @@
+<table class="table table-bordered table-hover">
+<thead class="thead-dark">
+  <tr>
+    <th>User Name</th>
+    <th>Room Id</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @logs.each do |log| %>
+          <tr>
+          <td><%= log.user.firstname+" "+log.user.lastname%></td>
+          <td><%= log.room_id %></td>
+          <td><%= log.startdate %></td>
+          <td><%= log.enddate %></td>
+          </tr>
+      <% end %>
+</tbody>
+</table>
+<br>
+<td><%= link_to 'Back', rooms_path ,class:"btn btn-dark"%></td>

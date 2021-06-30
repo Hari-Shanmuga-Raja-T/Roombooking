@@ -21,13 +21,4 @@ class Log < ApplicationRecord
          self.errors.add(:date,:must_valid,message: "Invalid Start and end date")
       end
      end
-
 end
-# class Post < ApplicationRecord
-#   validate :custom_validation
-#   private def custom_validation
-#     if ! (valid...)
-#       self.errors[:base] << "Custom error message"
-#     end
-#   end
-# end

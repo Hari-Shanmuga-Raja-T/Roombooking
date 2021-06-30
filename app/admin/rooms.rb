@@ -5,7 +5,7 @@ ActiveAdmin.register Room do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :roomid, :hotel_id, :roomno, :status, :price, :roomtype
+  permit_params :roomid, :hotel_id, :roomno, :status, :price, :roomtype
   #
   # or
   #
@@ -14,5 +14,16 @@ ActiveAdmin.register Room do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  index do
+    selectable_column
+    id_column
+    column :roomid
+    column :hotel_id
+    column :roomno
+    column :status
+    column :price
+    column :roomtype
+    actions
+  end
   filter :status , as: :select 
 end
