@@ -1,29 +1,32 @@
-<%= form_with url:"/users/roomsearch" ,method: :post do |form| %>
-  <div class="field form-group">
-    <b><%= form.label :Search %></b>
-    <%= form.select :key, [ 'Ariyalur','Chengalpattu','Chennai','Coimbatore','Cuddalore','Dharmapuri','Dindigul','Erode','Kallakurichi','Kanchipuram','Kanyakumari','Karur','Krishnagiri','Madurai','Nagapattinam','Namakkal','Nilgiris','Perambalur','Pudukkottai','Ramanathapuram','Ranipet','Salem','Sivaganga','Tenkasi','Thanjavur','Theni','Thoothukudi','Tiruchirappalli','Tirunelveli','Tirupathur','Tiruppur','Tiruvallur','Tiruvannamalai','Tiruvarur','Vellore','Viluppuram','Virudhunagar' ] %><br>
-    <%= form.submit "Search", class:"btn btn-dark" %>
-  </div>
+<% if @hotels.count == 0 %>
+  <%= render 'msg01' %>
+<% else %>
+  <%= form_with url:"/users/roomsearch" ,method: :post do |form| %>
+    <div class="field form-group">
+      <b><%= form.label :Search %></b>
+      <%= form.select :key, [ 'Ariyalur','Chengalpattu','Chennai','Coimbatore','Cuddalore','Dharmapuri','Dindigul','Erode','Kallakurichi','Kanchipuram','Kanyakumari','Karur','Krishnagiri','Madurai','Nagapattinam','Namakkal','Nilgiris','Perambalur','Pudukkottai','Ramanathapuram','Ranipet','Salem','Sivaganga','Tenkasi','Thanjavur','Theni','Thoothukudi','Tiruchirappalli','Tirunelveli','Tirupathur','Tiruppur','Tiruvallur','Tiruvannamalai','Tiruvarur','Vellore','Viluppuram','Virudhunagar' ] %><br>
+      <%= form.submit "Search", class:"btn btn-dark" %>
+    </div>
   <% end %>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Hotel Name</th>
+        <th>Location</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Hotel Name</th>
-      <th>Location</th>
-      <th>Phone Number</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @hotels.each do |hotel| %>
-        <tr>
-          <td><%= hotel.hotelname %></td>
-          <td><%= hotel.address %></td>
-          <td><%= hotel.phno %></td>
-          <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
-        </tr>
-    <%end%>
-  </tbody>
-</table>
+    <tbody>
+      <% @hotels.each do |hotel| %>
+          <tr>
+            <td><%= hotel.hotelname %></td>
+            <td><%= hotel.address %></td>
+            <td><%= hotel.phno %></td>
+            <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
+          </tr>
+      <%end%>
+    </tbody>
+  </table>
+<% end %>

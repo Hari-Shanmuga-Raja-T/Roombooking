@@ -1,22 +1,26 @@
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Hotel Name</th>
-      <th>Room Id</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @logs.each do |log| %>
-        <tr>
-          <td><%= log.hotel.hotelname %></td>
-          <td><%= log.room_id %></td>
-          <td><%= log.startdate %></td>
-          <td><%= log.enddate %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<td><%= link_to 'Back', root_path ,class:"btn btn-dark"%></td>
+<% if @logs.count == 0 %>
+  <%= render 'msg01' %>
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Hotel Name</th>
+        <th>Room Id</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @logs.each do |log| %>
+          <tr>
+            <td><%= log.hotel.hotelname %></td>
+            <td><%= log.room_id %></td>
+            <td><%= log.startdate %></td>
+            <td><%= log.enddate %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+<% end %>
+<td><%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%></td>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  use_doorkeeper# do
-    #skip_controllers :authorizations, :applications, :authorized_applications
-  #end
+  use_doorkeeper
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       get 'users/showlog/:id', :to => "users#showlog" 
@@ -13,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   post '/users/booking', :to => "logs#create"
-  post '/users/roomsearch', :to => 'users#roomsearch'
+  post '/users/roomsearch', :to => 'users#roomsearch', as: :users_roomsearch
   get 'users/history' , :to => "users#userhistory" , as: :users_history
   get 'hotels/history' , :to => "hotels#hotel_history" , as: :hotel_history
   devise_for :users , path: 'users'

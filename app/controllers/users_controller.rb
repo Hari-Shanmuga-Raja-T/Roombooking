@@ -4,6 +4,7 @@ class UsersController<ApplicationController
   end
   def userhome
     @hotels=Hotel.all
+    puts "================#{@hotels.nil?}==============="
   end
   def userroombooking
     @room = Room.all
@@ -12,7 +13,6 @@ class UsersController<ApplicationController
   end
   def searchallresult
     @key = params[:val]
-    # @room = Room.all
     @room = Hotel.where(address: @key).includes(:rooms)
   end
   def userhistory

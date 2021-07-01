@@ -25,5 +25,7 @@ ActiveAdmin.register User do
     column :mode
     actions
   end
-  filter :mode , as: :select 
+  filter :firstname , as: :select 
+  filter :lastname , as: :select
+  filter :email , as: :select
 end

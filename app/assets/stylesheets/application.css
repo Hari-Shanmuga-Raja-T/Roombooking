@@ -13,3 +13,7 @@
  *= require_hotels
  *= require_self
  */
+.nav{
+    color : red
+
+}

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to 'Room Booking' , root_path,class:"navbar-brand"%>
-  <!--<a class="navbar-brand" href="#">Room Booking</a>-->
+  <!--<a class="navbar-brand" href="#"  style="background-color:red !important;">Room Booking</a>-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -83,8 +83,9 @@
         <li class="nav-item">
             <%= link_to 'User Sign In' , new_user_session_path,class:"nav-link"%>
         </li>
-        <%= link_to 'Admin' , new_admin_user_session_path,class:"nav-link navbar-right"%>
-      <% end %>
+    <% end %>
   </div>
-
+    <% if user_signed_in? == hotel_signed_in?%>
+        <%= link_to 'Admin' , new_admin_user_session_path,class:"btn btn-danger"%>
+    <% end %>
 </nav>

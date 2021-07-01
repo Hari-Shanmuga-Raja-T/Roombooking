@@ -1,25 +1,28 @@
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Hotel Name</th>
-      <th>Location</th>
-      <th>Phone Number</th>
-      <th>Action</th>
-      <!--<th colspan="2"></th>-->
-    </tr>
-  </thead>
+<% if @hotel.nil? %>
+  <%= render 'msg01' %>
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Hotel Name</th>
+        <th>Location</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @hotels.each do |hotel| %>
-        <% if hotel.address == @key %>
-            <tr>
-            <td><%= hotel.hotelname %></td>
-            <td><%= hotel.address %></td>
-            <td><%= hotel.phno %></td>
-            <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
-            </tr>
-        <% end %>
-    <%end%>
-  </tbody>
-</table>
+    <tbody>
+      <% @hotels.each do |hotel| %>
+          <% if hotel.address == @key %>
+              <tr>
+              <td><%= hotel.hotelname %></td>
+              <td><%= hotel.address %></td>
+              <td><%= hotel.phno %></td>
+              <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
+              </tr>
+          <% end %>
+      <%end%>
+    </tbody>
+  </table>
+<%end%>
 <%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%>
