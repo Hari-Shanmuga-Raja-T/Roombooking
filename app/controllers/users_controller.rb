@@ -4,7 +4,6 @@ class UsersController<ApplicationController
   end
   def userhome
     @hotels=Hotel.all
-    puts "================#{@hotels.nil?}==============="
   end
   def userroombooking
     @room = Room.all

@@ -40,12 +40,6 @@
     <%= f.label :address %><br />
     <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
   </div>
-
-  <div class="field form-group">
-    <%= f.label :mode %><br />
-    <%= f.select :mode, ['User' , 'Manager'] %> 
-  </div>
-
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-dark" %>
   </div>

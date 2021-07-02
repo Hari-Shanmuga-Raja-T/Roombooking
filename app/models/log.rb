@@ -18,7 +18,7 @@ class Log < ApplicationRecord
 
      def date_validation
       if  Date.parse(startdate) < Date.today or Date.parse(startdate) > Date.parse(enddate)
-         self.errors.add(:date,:must_valid,message: "Invalid Start and end date")
+         self.errors.add(:startdate,:must_valid,message: "Invalid Start and end date")
       end
      end
 end
