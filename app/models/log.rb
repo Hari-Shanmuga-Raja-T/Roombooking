@@ -12,8 +12,8 @@ class Log < ApplicationRecord
 
    private
      def updatestatus
-        room = Room.find_by(roomid: $Rid)
-        room.update(status: 'Not available')
+         room = Room.find_by(roomid: $Rid)
+         room.update(status: 'Not available')
      end
 
      def date_validation

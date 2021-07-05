@@ -5,8 +5,8 @@ class LogsController<ApplicationController
         log.hotel_id = Room.find_by(roomid: params[:room_id]).hotel_id
         log.user_id = params[:user_id]
         log.room_id = params[:room_id]
-        log.startdate = params[:startdate].to_s
-        log.enddate = params[:enddate].to_s
+        log.startdate = params[:startdate]
+        log.enddate = params[:enddate]
         respond_to do |format|
             if log.save
                 format.html { redirect_to users_userhome_path , notice: "Successfully booked"}

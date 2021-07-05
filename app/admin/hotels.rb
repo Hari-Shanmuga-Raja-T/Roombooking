@@ -25,5 +25,6 @@ ActiveAdmin.register Hotel do
     actions
   end
   filter :address , as: :select 
+  filter :hotelname , as: :select
   
 end

@@ -5,15 +5,15 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :firstname, :lastname, :phno, :address, :mode
+  # permit_params :email, :remember_created_at, :firstname, :lastname, :phno, :address
   #
   # or
   #
-  # permit_params do
-  #   permitted = [:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :firstname, :lastname, :phno, :address, :mode]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params do
+    permitted = [:email,:encrypted_password, :firstname, :lastname, :phno, :address]
+    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted
+  end
   index do
     selectable_column
     id_column
@@ -22,7 +22,6 @@ ActiveAdmin.register User do
     column :email
     column :phno
     column :address
-    column :mode
     actions
   end
   filter :firstname , as: :select 

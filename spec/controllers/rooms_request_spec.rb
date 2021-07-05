@@ -9,7 +9,7 @@ RSpec.describe "RoomsRequest", type: :request do
     context "for api" do
         it 'returns a successful response(api#index)' do
             get api_v1_rooms_path
-            expect(response).to be_successful
+            expect(valid_json?(response)).to eq(true)
         end
         it 'returns a successful response(api#destroy)' do
             delete "/api/v1/rooms/"+@room.id.to_s
@@ -24,4 +24,13 @@ RSpec.describe "RoomsRequest", type: :request do
             expect(response).to be_successful
         end
     end
+    
+    private
+    def valid_json?(response)
+        JSON.parse(response.body.to_s)
+        return true
+      rescue JSON::ParserError => e
+        return false
+    end
 end
+    
