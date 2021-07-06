@@ -1,15 +1,18 @@
 class User < ApplicationRecord
-  valid_password = /\A
-  (?=.*\d)      
-  (?=.*[a-z])    
-  (?=.*[A-Z])       
-  (?=.*[[:^alnum:]])
-  /x
-  validates :password,
-    presence: true, 
-    length: { in: Devise.password_length }, 
-    format: { with: valid_password } 
-    # confirmation: true
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+         
+  # valid_password = /\A
+  # (?=.*\d)      
+  # (?=.*[a-z])    
+  # (?=.*[A-Z])       
+  # (?=.*[[:^alnum:]])
+  # /x
+  # validates :password,
+  #   presence: true,
+  #   length: { in: Devise.password_length }, 
+  #   format: { with: valid_password }, 
+  #   confirmation: true
   validates :firstname,presence: true
   validates :lastname,presence: true
   validates :phno,presence: true,uniqueness: true,length: { in: 6..10 },numericality: { only_integer: true }

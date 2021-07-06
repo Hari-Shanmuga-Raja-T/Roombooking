@@ -5,14 +5,33 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :email, :remember_created_at, :firstname, :lastname, :phno, :address
+  # permit_params :email, :firstname, :lastname, :phno, :address
   #
   # or
-  #
+  # permit_params do
+  #   permitted = [:email, :password, :password_confirmation, :reset_password_token, :reset_password_sent_at, :remember_created_at, :firstname, :lastname, :phno, :address]
+  #   if params[:user] && params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+  #     params[:user].delete(:password)
+  #     params[:user].delete(:password_confirmation)
+  #   end
+  #   permitted
+  # end
   permit_params do
-    permitted = [:email,:encrypted_password, :firstname, :lastname, :phno, :address]
+    permitted = [:email,:encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :firstname, :lastname, :phno, :address]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
+  end
+  form do |f|
+    f.inputs "User" do
+      f.input :email
+      f.input :firstname
+      f.input :lastname
+      f.input :password if f.object.new_record?
+      f.input :password_confirmation if f.object.new_record?
+      f.input :phno      
+      f.input :address 
+    end
+    f.actions
   end
   index do
     selectable_column

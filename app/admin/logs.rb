@@ -14,6 +14,16 @@ ActiveAdmin.register Log do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  form do |f|
+    f.inputs "Log" do
+      f.input :hotel_id
+      f.input :user_id
+      f.input :room_id
+      f.input :startdate
+      f.input :enddate
+    end
+    f.actions
+  end
   index do
     selectable_column
     id_column

@@ -14,6 +14,17 @@ ActiveAdmin.register Room do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  form do |f|
+    f.inputs "Room" do
+      f.input :roomid
+      f.input :hotel_id
+      f.input :roomno
+      f.input :status
+      f.input :price
+      f.input :roomtype 
+    end
+    f.actions
+  end
   index do
     selectable_column
     id_column
