@@ -1,0 +1,33 @@
+<%= form_with url: "/bookings/create" , method: :post do |form| %>
+    <div class="field form-group">
+      <% form.label :room_id %>
+      <%= form.text_field :room_id,value: log.room.id, class:"form-control", type: :hidden %>
+    </div>
+  
+    <div class="field form-group">
+      <% form.label :hotel_id %>
+      <%= form.text_field :hotel_id, value: @hotel_id, class:"form-control", type: :hidden %>
+    </div>
+    
+    <div class="field form-group">
+      <% form.label :user_id %>
+      <%= form.text_field :user_id,value: current_user.id, class:"form-control", type: :hidden %>
+    </div>
+  
+    <div class="field form-group">
+      <%= form.label :start_date %><br>
+      <%= form.date_field :startdate ,class:"form-control",:required => true%>
+    </div>
+  
+    <div class="field form-group">
+      <%= form.label :end_date %><br>
+      <%= form.date_field :enddate ,class:"form-control",:required => true%>
+    </div>
+    <div class="actions">
+      <%= form.submit "Book", class:"btn btn-dark"%>
+    </div>
+    <!--<br>
+    <div class="actions">
+          <%= link_to "Wishlist", wishlist_delete_path(user_id:current_user.id,room_id:log.id),method: :post ,class:"btn btn-danger"%>
+    </div>--!>
+  <% end %>

@@ -1,18 +1,7 @@
-<%= form_with url: "/users/booking" , method: :post do |form| %>
-  <% log.errors.any?.to_s %>
-  <% if log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
-        <ul>
-        <% log.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with url: "/bookings/create" , method: :post do |form| %>
     <div class="field form-group">
       <% form.label :room_id %>
-      <%= form.text_field :room_id,value: log.roomid, class:"form-control", type: :hidden %>
+      <%= form.text_field :room_id,value: log.id, class:"form-control", type: :hidden %>
     </div>
   
     <div class="field form-group">
@@ -27,16 +16,26 @@
   
     <div class="field form-group">
       <%= form.label :start_date %><br>
-      <%= form.date_field :startdate ,class:"form-control"%>
+      <%= form.date_field :startdate ,class:"form-control",:required => true%>
     </div>
   
     <div class="field form-group">
       <%= form.label :end_date %><br>
-      <%= form.date_field :enddate ,class:"form-control"%>
+      <%= form.date_field :enddate ,class:"form-control",:required => true%>
     </div>
   
     <div class="actions">
         <%= form.submit "Book", class:"btn btn-dark"%>
     </div>
+    <br>
+    <% if Wishlist.find_by(room_id:log.id).nil?%>
+      <div class="actions">
+          <%= link_to "Wishlist", wishlist_create_path(user_id:current_user.id,room_id:log.id),method: :post ,class:"btn btn-light"%>
+      </div>
+    <% else %>
+      <div class="actions">
+          <%= link_to "Wishlist", wishlist_delete_path(user_id:current_user.id,room_id:log.id),method: :post ,class:"btn btn-danger"%>
+      </div>
+    <% end %>
 
   <% end %>

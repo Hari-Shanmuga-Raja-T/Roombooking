@@ -1,4 +1,4 @@
-<% if @logs.count == 0 %>
+<% if @logs.count ==0 %>
   <%= render 'users/msg01' %>
 <% else %>
   <table class="table table-bordered table-hover">
@@ -15,7 +15,7 @@
     <% @logs.each do |log| %>
             <tr>
             <td><%= log.user.firstname+" "+log.user.lastname%></td>
-            <td><%= log.room_id %></td>
+            <td><%= log.room.roomid %></td>
             <td><%= log.startdate %></td>
             <td><%= log.enddate %></td>
             </tr>

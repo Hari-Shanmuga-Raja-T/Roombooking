@@ -13,8 +13,8 @@
     <tbody>
       <% @logs.each do |log| %>
           <tr>
-            <td><%= log.hotel.hotelname %></td>
-            <td><%= log.room_id %></td>
+            <td><%= log.room.hotel.hotelname %></td>
+            <td><%= log.room.roomid%></td>
             <td><%= log.startdate %></td>
             <td><%= log.enddate %></td>
           </tr>

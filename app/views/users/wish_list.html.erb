@@ -1,0 +1,18 @@
+<% if @list.count == 0 %>
+    <%= render 'msg01' %>
+<% end %>
+<% @list.each do |h| %>
+    <% if h.room.status == "Available" %>
+        <div class="jumbotron">
+        <h1 class="display-4"><%= h.room.roomid %></h1>
+        <p class="lead"><%= h.room.roomno %> | <%= h.room.status %></p>
+        <hr class="my-4">
+        <p><del><%= "#{h.room.price}" %> </del><p class="lead" style="color:red;"><%= "₹ #{update_price(h.room)} only"%></p>   <%= " AC : #{h.room.roomtype.AC} "%>  |  <%= " Bed count : #{h.room.roomtype.beds.to_s} "%></p>
+
+        <%= render 'bookform', log: h %>
+        
+        </div>
+    <% end %>
+<% end %>
+<%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%>
+<br>

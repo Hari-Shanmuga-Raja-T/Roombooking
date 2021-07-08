@@ -21,7 +21,16 @@
         <li class="nav-item">
             <%= link_to 'History' , hotel_history_path,class:"nav-link"%>
         </li>
-        
+
+        <li class="nav-item">
+            <%= link_to 'Discounts' , hotel_discount_path,class:"nav-link"%>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Bookings' , hotels_bookings_path,class:"nav-link"%>
+        </li>
+
+
         <li class="nav-item">
             <%= link_to 'Sign Out' , destroy_hotel_session_path,method: :delete,class:"nav-link"%>
         </li>
@@ -38,6 +47,14 @@
 
         <li class="nav-item">
         <%= link_to 'History' , users_history_path,class:"nav-link"%>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Bookings' , users_bookings_path,class:"nav-link"%>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Wish list' , users_wishlist_path,class:"nav-link"%>
         </li>
 
         <li class="nav-item">

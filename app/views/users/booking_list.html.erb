@@ -1,0 +1,24 @@
+<% if @lists.count == 0 %>
+  <%= render 'msg01' %>
+<% else %>
+    <% @lists.each do |list| %>
+        <div class="jumbotron">
+        <h1 class="display-4"><%= list.room.roomid %></h1>
+        <hr class="my-4">
+        <p class="lead"><%= list.hotel.hotelname %></p>
+        <p class="lead"><%= "Start date : " + list.startdate.to_s %> | <%= "End date : "+ list.enddate.to_s %></p>
+        <%= form_with url: "/bookings/delete" , method: :post do |form| %>
+            <div class="field form-group">
+              <% form.label :id %>
+              <%= form.text_field :booking_id,value: list.id, class:"form-control", type: :hidden %>
+            </div>
+          
+            <div class="actions">
+                <%= form.submit "Cancel", class:"btn btn-danger"%>
+            </div>
+        
+          <% end %>
+        </div>
+    <%end%>
+<%end%>
+<%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%>

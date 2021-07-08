@@ -1,28 +1,20 @@
-<% if @hotels.nil? %>
+<% if @hotels.count == 0 %>
   <%= render 'msg01' %>
 <% else %>
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Hotel Name</th>
-        <th>Location</th>
-        <th>Phone Number</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
+    <div class="row m-10">
       <% @hotels.each do |hotel| %>
-          <% if hotel.address == @key %>
-              <tr>
-              <td><%= hotel.hotelname %></td>
-              <td><%= hotel.address %></td>
-              <td><%= hotel.phno %></td>
-              <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
-              </tr>
-          <% end %>
+            <div class="card col-sm-5 m-3" style="width: 18rem;">
+              <div class="card-body">
+                <h3 class="card-title" style="color:green;"><%=hotel.hotelname%></h3>
+                <hr class="my-4">
+                <h4 class="card-title"><%=hotel.address%> | <%=hotel.phno%></h3> 
+                <h5 class="card-title" style="color:red;"><%="Discount : #{hotel.discount.percentage} % "%> </h5>
+                <br>
+                <%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%>
+              </div>
+            </div>
       <%end%>
-    </tbody>
-  </table>
+    </div>
 <%end%>
+<br>
 <%= link_to 'Back', users_userhome_path ,class:"btn btn-dark"%>

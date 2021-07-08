@@ -21,7 +21,7 @@ ActiveAdmin.register Room do
       f.input :roomno
       f.input :status
       f.input :price
-      f.input :roomtype 
+      # f.input :roomtype 
     end
     f.actions
   end

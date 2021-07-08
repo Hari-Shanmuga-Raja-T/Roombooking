@@ -5,6 +5,5 @@ FactoryBot.define do
     roomno { '201' }
     status { 'Available' }
     price { '750' }
-    roomtype { 'AC/2B' }
   end
 end

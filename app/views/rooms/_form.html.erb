@@ -30,10 +30,18 @@
     <%= form.label :price %>
     <%= form.text_field :price, class:"form-control" %>
   </div>
-
-  <div class="field form-group">
-    <%= form.label :roomtype %>
-    <%= form.text_field :roomtype, class:"form-control" %>
+  <div class="container" >
+    <h>Room type</h>
+    <br>
+    <div class="field form-group">
+      <%= form.label :AC %>
+      <br>
+      <%= form.select :AC, ['Yes', 'No']%>
+    </div>
+    <div class="field form-group">
+      <%= form.label :beds %>
+      <%= form.text_field :beds, class:"form-control" %>
+    </div>
   </div>
 
   <div class="field form-group">

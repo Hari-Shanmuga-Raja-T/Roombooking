@@ -1,8 +1,8 @@
 
 <div class="jumbotron">
   <h1 class="display-4"><%= @room.roomid %></h1>
-  <p class="lead"><%= @room.hotel_id %>  |  <%= @room.roomno %>  |  <%= @room.status %> </p>
-  <p class="lead"><%= @room.price %>  |  <%= @room.roomtype %></p>
+  <p class="lead"><%= @room.roomno %>  |  <%= @room.status %> </p>
+  <p class="lead"><%= @room.price %>  |  <%="AC : "+ @room.roomtype.AC.to_s %> | <%= "Bed count : " + @room.roomtype.beds.to_s%></p>
   <%= link_to 'Edit', edit_room_path(@room),class:"btn btn-dark" %>
   <%= link_to 'Back', rooms_path,class:"btn btn-dark" %>
 </div>

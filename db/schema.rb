@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_042031) do
+ActiveRecord::Schema.define(version: 2021_07_08_052322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(version: 2021_07_02_042031) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer "hotel_id"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.date "startdate"
+    t.date "enddate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.integer "hotel_id"
+    t.integer "percentage", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "description", default: ""
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.string "hotelname"
     t.string "email", null: false
@@ -57,13 +75,13 @@ ActiveRecord::Schema.define(version: 2021_07_02_042031) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.string "hotel_id"
-    t.string "user_id"
-    t.string "room_id"
-    t.string "startdate"
-    t.string "enddate"
+    t.integer "hotel_id"
+    t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "startdate"
+    t.date "enddate"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -110,14 +128,21 @@ ActiveRecord::Schema.define(version: 2021_07_02_042031) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "roomid"
-    t.string "hotel_id"
+    t.integer "hotel_id"
     t.string "roomno"
     t.string "status"
     t.string "price"
-    t.string "roomtype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
+  end
+
+  create_table "roomtypes", force: :cascade do |t|
+    t.integer "room_id"
+    t.string "AC"
+    t.integer "beds"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,8 +157,16 @@ ActiveRecord::Schema.define(version: 2021_07_02_042031) do
     t.string "lastname"
     t.string "phno"
     t.string "address"
+    t.boolean "ban"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"

@@ -4,29 +4,22 @@
   <%= form_with url:"/users/roomsearch" ,method: :post do |form| %>
     <div class="field form-group">
       <b><%= form.label :Search %></b>
-      <%= form.select :key, [ 'Ariyalur','Chengalpattu','Chennai','Coimbatore','Cuddalore','Dharmapuri','Dindigul','Erode','Kallakurichi','Kanchipuram','Kanyakumari','Karur','Krishnagiri','Madurai','Nagapattinam','Namakkal','Nilgiris','Perambalur','Pudukkottai','Ramanathapuram','Ranipet','Salem','Sivaganga','Tenkasi','Thanjavur','Theni','Thoothukudi','Tiruchirappalli','Tirunelveli','Tirupathur','Tiruppur','Tiruvallur','Tiruvannamalai','Tiruvarur','Vellore','Viluppuram','Virudhunagar' ] %><br>
+      <%= form.select :key, [ 'Ariyalur','Chengalpattu','Chennai','Coimbatore','Cuddalore','Dharmapuri','Dindigul','Erode','Kallakurichi','Kanchipuram','Kanyakumari','Karur','Krishnagiri','Madurai','Nagapattinam','Namakkal','Nilgiris','Perambalur','Pudukkottai','Ramanathapuram','Ranipet','Salem','Sivaganga','Tenkasi','Thanjavur','Theni','Thoothukudi','Tiruchirappalli','Tirunelveli','Tirupathur','Tiruppur','Tiruvallur','Tiruvannamalai','Tiruvarur','Vellore','Viluppuram','Virudhunagar' ],:style => 'width:100px' %><br>
       <%= form.submit "Search", class:"btn btn-dark" %>
     </div>
   <% end %>
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Hotel Name</th>
-        <th>Location</th>
-        <th>Phone Number</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
+  <div class="row m-10">
       <% @hotels.each do |hotel| %>
-          <tr>
-            <td><%= hotel.hotelname %></td>
-            <td><%= hotel.address %></td>
-            <td><%= hotel.phno %></td>
-            <td><%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%></td>
-          </tr>
+        <div class="card col-sm-5 m-3" style="width: 18rem;" >
+          <div class="card-body">
+            <h3 class="card-title" style="color:green;"><%=hotel.hotelname%></h3>
+            <hr class="my-4">
+            <h4 class="card-title"><%=hotel.address%> | <%=hotel.phno%></h3> 
+            <h5 class="card-title" style="color:red;"><%="Discount : #{hotel.discount.percentage} % "%> </h5>
+            <br>
+            <%= link_to 'View', users_userroombooking_path(hotel) ,class:"btn btn-dark"%>
+          </div>
+        </div>
       <%end%>
-    </tbody>
-  </table>
+  </div>
 <% end %>

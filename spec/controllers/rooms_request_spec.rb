@@ -16,7 +16,7 @@ RSpec.describe "RoomsRequest", type: :request do
             expect(response).to be_successful
         end
         it 'returns a successful response(api#create)' do
-            post "/api/v1/rooms", params: {roomid:'dummy202', hotel_id:@hotel.id, roomno:'201', status:'Available', price:'750', roomtype:'AC/3B'}
+            post "/api/v1/rooms", params: {roomid:'dummy202', hotel_id:@hotel.id, roomno:'201', status:'Available', price:'750'}
             expect(response).to be_successful
         end
         it 'returns a successful response(api#update)' do

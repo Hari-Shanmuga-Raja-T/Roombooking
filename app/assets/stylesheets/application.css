@@ -17,3 +17,20 @@
     color : red
 
 }
+div.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+div.card:hover{
+    transform: scale(1.00);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+ }
+.login{
+    background-image: url("Log_in.png");
+    width: 100%;
+    height: 100%;
+}
+.welcome{
+    width: 1000px;
+    height: 1000px;
+}

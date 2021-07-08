@@ -8,11 +8,11 @@
     <thead class="thead-dark">
       <tr>
         <th>Roomid</th>
-        <th>Hotelid</th>
         <th>Roomno</th>
         <th>Status</th>
         <th>Price</th>
-        <th>Roomtype</th>
+        <th>AC?</th>
+        <th>Bed count</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -22,11 +22,11 @@
         <% if room.hotel == current_hotel %>
           <tr>
             <td><%= room.roomid %></td>
-            <td><%= room.hotel_id %></td>
             <td><%= room.roomno %></td>
             <td><%= room.status %></td>
             <td><%= room.price %></td>
-            <td><%= room.roomtype %></td>
+            <td><%= room.roomtype.AC %></td>
+            <td><%= room.roomtype.beds %></td>
             <td><%= link_to 'Show', room ,class:"btn btn-light"%></td>
             <td><%= link_to 'Edit', edit_room_path(room) ,class:"btn btn-light"%></td>
             <td><%= link_to 'Destroy', room,class:"btn btn-light", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -39,3 +39,7 @@
 <br>
 
 <%= link_to 'New Room', new_room_path, class:"btn btn-dark"%>
+
+<br>
+<br>
+<%= link_to 'Export as CSV', '/rooms.csv', class:"btn btn-danger"%>

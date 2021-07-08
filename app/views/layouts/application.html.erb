@@ -18,8 +18,8 @@
   <body>
     <%= render 'users/managernavbar'%>
     <br>
-    <%if notice%>
-    <%= render 'layouts/alerts'%>
+    <% if(flash[:alert] || notice) %>
+      <%= render 'layouts/alerts'%>
     <%end%>
     <div class="container">
       <br>
