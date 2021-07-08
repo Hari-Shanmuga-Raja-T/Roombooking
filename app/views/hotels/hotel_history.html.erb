@@ -14,7 +14,7 @@
   <tbody>
     <% @logs.each do |log| %>
             <tr>
-            <td><%= log.user.firstname+" "+log.user.lastname%></td>
+            <td><%= full_name(log.user)%></td>
             <td><%= log.room.roomid %></td>
             <td><%= log.startdate %></td>
             <td><%= log.enddate %></td>

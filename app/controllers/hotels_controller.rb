@@ -1,5 +1,6 @@
 class HotelsController<ApplicationController
     before_action :authenticate_hotel!
+    helper_method :full_name
     def hotel_history
       @logs=current_hotel.logs
     end
@@ -11,6 +12,9 @@ class HotelsController<ApplicationController
       if @discount.nil?
           @discount=Discount.new
       end
-  end
+    end
+    def full_name(user)
+      return user.firstname+" "+user.lastname
+    end
 end
   

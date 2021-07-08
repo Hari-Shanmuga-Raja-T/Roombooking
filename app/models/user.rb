@@ -7,8 +7,9 @@ class User < ApplicationRecord
   validates :lastname,presence: true
   validates :phno,presence: true,uniqueness: true,length: { in: 6..10 },numericality: { only_integer: true }
   validates :address,presence: true
-
+  
   has_many :logs, dependent: :destroy
+  has_many :hotels,through: :logs
   has_many :wishlists, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :access_tokens,

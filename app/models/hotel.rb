@@ -9,8 +9,9 @@ class Hotel < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :rooms , dependent: :destroy
-  has_many :logs , through: :rooms
-  has_many :bookings, dependent: :destroy
+  has_many :logs , dependent: :destroy
+  has_many :users ,through: :logs
+  has_many :bookings, through: :rooms
   has_one :discount, dependent: :destroy
   
 end

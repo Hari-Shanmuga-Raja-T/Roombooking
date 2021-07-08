@@ -10,7 +10,7 @@ class Room < ApplicationRecord
     has_one :roomtype, dependent: :destroy
     has_one :booking
     has_many :logs , dependent: :destroy
-    has_one :wishlist
+    has_many :wishlist
 
     def self.to_csv
         CSV.generate do |var|
