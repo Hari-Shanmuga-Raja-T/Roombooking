@@ -11,14 +11,11 @@ module Api
 
         def index
             respond_with Room.all
-            # respond_with 'views/users/msg01'
-            #render json: {user:@user , message: "Successfully updated"} , status:200
         end
 
         def update
             @room = Room.find_by(id: params[:id])
             @room.update(status: params[:status])
-            # render html: 'views/users/msg01'
         end
 
         def destroy

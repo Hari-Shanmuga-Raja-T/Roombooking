@@ -33,4 +33,14 @@ class User < ApplicationRecord
   def inactive_message
     "Your account is suspended"
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      column_names = %w(firstname lastname email phno)
+      csv << column_names  
+      all.each do |user|
+        csv << [user.firstname,user.lastname,user.email,user.phno]
+      end
+    end
+  end 
 end

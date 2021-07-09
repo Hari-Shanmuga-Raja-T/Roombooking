@@ -1,7 +1,7 @@
 <%= form_with url: "/bookings/create" , method: :post do |form| %>
     <div class="field form-group">
       <% form.label :room_id %>
-      <%= form.text_field :room_id,value: log.room.id, class:"form-control", type: :hidden %>
+      <%= form.text_field :room_id,value: list.room.id, class:"form-control", type: :hidden %>
     </div>
   
     <div class="field form-group">
@@ -26,8 +26,6 @@
     <div class="actions">
       <%= form.submit "Book", class:"btn btn-dark"%>
     </div>
-    <!--<br>
-    <div class="actions">
-          <%= link_to "Wishlist", wishlist_delete_path(user_id:current_user.id,room_id:log.id),method: :post ,class:"btn btn-danger"%>
-    </div>--!>
+    <br >
+    <%= link_to "Remove",wishlist_delete_path(user_id:current_user.id,room_id:list.room.id),method: :post ,class:"btn btn-danger"%>
   <% end %>

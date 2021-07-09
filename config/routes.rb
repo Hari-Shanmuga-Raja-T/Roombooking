@@ -24,9 +24,13 @@ Rails.application.routes.draw do
   get 'users/bookings', :to => "users#booking_list", as: :users_bookings
   get 'hotels/bookings', :to => "hotels#booking_list", as: :hotels_bookings
   get 'users/wishlists', :to => "users#wish_list", as: :users_wishlist
+  get '/all_user', :to => "hotels#all_user", as: :alluser_path
   devise_for :users , path: 'users'
   devise_for :hotels
-  resources :rooms
+  resources :rooms 
+  resources :discounts do
+    collection { post :import }
+  end
   get '/users/userhome', :to => "users#userhome"
   get '/users/:id/userroombooking', :to => "users#userroombooking", as: :users_userroombooking
   root 'users#managerdashboard'

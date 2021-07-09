@@ -37,4 +37,5 @@ ActiveAdmin.register Room do
     actions
   end
   filter :status , as: :select 
+  filter :hotel_id , as: :select 
 end

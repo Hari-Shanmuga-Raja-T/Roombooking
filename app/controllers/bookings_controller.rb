@@ -1,8 +1,6 @@
 class BookingsController<ApplicationController
-    after_action :updatestatus, only: [:create]
     def create
         booking = Booking.new
-        $Rid = params[:room_id]
         room=Room.find_by(id:params[:room_id])
         hotelid = room.hotel.id
         booking.hotel_id = hotelid
@@ -12,9 +10,10 @@ class BookingsController<ApplicationController
         booking.enddate = params[:enddate]
         respond_to do |format|
             if booking.save
-                format.html { redirect_to users_userhome_path , notice: "Successfully booked"}
+                BookingMailer.with(booking: booking).new_booking_email.deliver_now
+                format.html { redirect_to users_bookings_path, notice: "Successfully booked"}
             else
-                format.html { redirect_to users_userhome_path , notice: booking.errors.full_messages}
+                format.html { redirect_to request.referrer , notice: booking.errors.full_messages}
             end
         end
     end 
@@ -26,18 +25,20 @@ class BookingsController<ApplicationController
             if booking.destroy
                 room = Room.find_by(id:roomid)
                 room.update(status:"Available")
-                format.html { redirect_to users_userhome_path , notice: "Booking canceled"}
+                if user_signed_in?
+                    BookingMailer.with(booking: booking).cancel_booking_by_user_email.deliver_now
+                    format.html { redirect_to users_bookings_path, notice: "Booking canceled"}
+                else
+                    BookingMailer.with(booking: booking).cancel_booking_by_hotel_email.deliver_now
+                    format.html { redirect_to hotels_bookings_path, notice: "Booking canceled"}
+                end
             else
-                format.html { redirect_to users_userroombooking_path(Hotel.find_by(id: hotelid)) , notice: "Failed"}
+                if user_signed_in?
+                    format.html { redirect_to users_userroombooking_path(Hotel.find_by(id: hotelid)) , notice: "Failed"}
+                else
+                    format.html { redirect_to hotels_bookings_path , notice: "Failed"}
+                end
             end
-        end
-    end
-
-    private
-    def updatestatus
-        if !$Rid.nil?
-           room = Room.find_by(id: $Rid)
-           room.update(status: 'Not available')
         end
     end
 

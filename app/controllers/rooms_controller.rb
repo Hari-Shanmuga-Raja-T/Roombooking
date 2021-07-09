@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
+  
   before_action :set_room, only: %i[ show edit update destroy ]
   before_action :authenticate_hotel!, except: [:indexs]
   before_action :correct_hotel, only: [:show, :edit, :update,:destroy]
 
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.where(hotel_id:current_hotel.id)
     @room = Room.where(hotel_id:current_hotel.id)
     respond_to do |format|
       format.html

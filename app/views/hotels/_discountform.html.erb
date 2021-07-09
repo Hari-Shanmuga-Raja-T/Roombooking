@@ -24,3 +24,11 @@
           <%= form.submit "Save", class:"btn btn-dark"%>
       </div>
 <% end %>
+<br>
+<br>
+<%= form_tag import_discounts_path ,multipart: true do%>
+  <%= file_field_tag :file , class:"btn btn-light" %>
+  <br>
+  <br>
+  <%= submit_tag "Update" , class:"btn btn-danger"%>
+<% end %>

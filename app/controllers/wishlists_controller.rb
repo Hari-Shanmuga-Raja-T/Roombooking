@@ -5,9 +5,9 @@ class WishlistsController<ApplicationController
         wishlist.user_id=params[:user_id]
         respond_to do |format|
             if wishlist.save
-              format.html { redirect_to users_userhome_path, notice: "Added to wishlist" }
+              format.html { redirect_to users_wishlist_path, notice: "Added to wishlist" }
             else
-              format.html { redirect_to users_userhome_path, notice: "Failed"}
+              format.html { redirect_to request.referrer, notice: "Failed"}
             end
         end
     end
@@ -15,9 +15,9 @@ class WishlistsController<ApplicationController
         wishlist=Wishlist.find_by(room_id:params[:room_id])
         respond_to do |format|
             if wishlist.destroy
-              format.html { redirect_to users_userhome_path, notice: "Removed" }
+              format.html { redirect_to request.referrer, notice: "Removed" }
             else
-              format.html { redirect_to users_userhome_path, notice: "Failed"}
+              format.html { redirect_to request.referrer, notice: "Failed"}
             end
         end
     end

@@ -9,4 +9,10 @@ class Log < ApplicationRecord
    belongs_to :room
    belongs_to :hotel
 
+   after_save:updatestatus
+
+   def updatestatus
+      self.room.update(status: 'Available')
+   end
+
 end

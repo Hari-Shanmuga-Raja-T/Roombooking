@@ -9,7 +9,7 @@
         <hr class="my-4">
         <p><del><%= "#{h.room.price}" %> </del><p class="lead" style="color:red;"><%= "₹ #{update_price(h.room)} only"%></p>   <%= " AC : #{h.room.roomtype.AC} "%>  |  <%= " Bed count : #{h.room.roomtype.beds.to_s} "%></p>
 
-        <%= render 'bookform', log: h %>
+        <%= render 'bookform', list: h %>
         
         </div>
     <% end %>

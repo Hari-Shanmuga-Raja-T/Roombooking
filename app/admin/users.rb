@@ -21,6 +21,21 @@ ActiveAdmin.register User do
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
+
+  action_item :ban , only: :show do
+    if !user.ban
+      link_to "Ban", ban_admin_user_path(user) , method: :put
+    else
+      link_to "Unban" ,ban_admin_user_path(user) , method: :put
+    end
+  end
+
+  member_action :ban , method: :put do
+    user = User.find_by(id: params[:id])
+    user.update(ban: !user.ban)
+    redirect_to admin_user_path(user)
+  end
+
   form do |f|
     f.inputs "User" do
       f.input :email
@@ -30,7 +45,6 @@ ActiveAdmin.register User do
       f.input :password_confirmation if f.object.new_record?
       f.input :phno      
       f.input :address 
-      f.input :ban
     end
     f.actions
   end

@@ -19,4 +19,9 @@ class DiscountsController<ApplicationController
             end
         end
     end
+
+    def import
+        Discount.import(params[:file],current_hotel.id)
+        redirect_to hotel_discount_path, notice: "Discount updated"
+    end
 end

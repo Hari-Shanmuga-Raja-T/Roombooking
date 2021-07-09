@@ -19,7 +19,6 @@
 
     <tbody>
       <% @rooms.each do |room| %>
-        <% if room.hotel == current_hotel %>
           <tr>
             <td><%= room.roomid %></td>
             <td><%= room.roomno %></td>
@@ -31,7 +30,6 @@
             <td><%= link_to 'Edit', edit_room_path(room) ,class:"btn btn-light"%></td>
             <td><%= link_to 'Destroy', room,class:"btn btn-light", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
-        <%end%>
       <% end %>
     </tbody>
   </table>
@@ -42,4 +40,5 @@
 
 <br>
 <br>
-<%= link_to 'Export as CSV', '/rooms.csv', class:"btn btn-danger"%>
+<%= link_to 'Export', '/rooms.csv', class:"btn btn-success"%>
+
