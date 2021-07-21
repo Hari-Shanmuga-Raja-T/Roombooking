@@ -21,4 +21,6 @@ ActiveAdmin.register Wishlist do
     end
     f.actions
   end
+  filter :user_id , as: :select
+  filter :room_id , as: :select  
 end

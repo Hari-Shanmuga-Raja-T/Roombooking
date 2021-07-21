@@ -30,5 +30,6 @@ ActiveAdmin.register Roomtype do
     column :beds
     actions
   end
+  filter :beds , as: :select 
   
 end

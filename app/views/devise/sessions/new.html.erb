@@ -1,13 +1,13 @@
-<div class="signin">
-<h2>Hotel Log in</h2>
+<div class="signin signin_container">
+<h2 style="padding-top:20px;"><center>Log in</center></h2><br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field form-group">
-    <%= f.label :email %><br />
+    <center><%= f.label :email %></center>
     <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password %><br />
+    <center><%= f.label :password %></center>
     <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
   </div>
 
@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" ,class:"btn btn-dark"%>
+    <center><%= f.submit "Log in" ,class:"btn btn-secondary"%></center>
   </div>
 <% end %>
 <br>

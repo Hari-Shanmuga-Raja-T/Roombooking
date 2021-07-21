@@ -24,4 +24,5 @@ ActiveAdmin.register Booking do
     end
     f.actions
   end
+  filter :hotel_id , as: :select 
 end

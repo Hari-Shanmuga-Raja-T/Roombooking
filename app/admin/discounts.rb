@@ -22,4 +22,5 @@ ActiveAdmin.register Discount do
     end
     f.actions
   end
+  filter :hotel_id , as: :select 
 end
